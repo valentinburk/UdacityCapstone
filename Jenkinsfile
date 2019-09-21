@@ -13,7 +13,7 @@ pipeline {
       //}
    stage ('Cloning git repo') {
     steps{
-      git https://github.com/alexba13/UdacityCapstone.git
+      git 'https://github.com/alexba13/UdacityCapstone.git'
     }
    }
 	 stage ('Build the image.'){
