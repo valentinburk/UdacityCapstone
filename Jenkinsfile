@@ -4,12 +4,12 @@ pipeline {
   }
      agent any
      stages {
-     stage('Lint HTML check') {
-         steps {
-	     sh 'echo "Check lint for HTML"'
-         sh 'tidy -q -e *.html'
-         }
-      }
+     //stage('Lint HTML check') {
+         //steps {
+	     //sh 'echo "Check lint for HTML"'
+         //sh 'tidy -q -e *.html'
+         //}
+      //}
 	 stage ('Build the image.'){
          steps {
              script {
