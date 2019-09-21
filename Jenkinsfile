@@ -17,7 +17,7 @@ pipeline {
               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']])
               {
                   //sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
-                  sh 'sudo usermod -a -G docker $USER'
+                  //sh 'sudo usermod -a -G docker $USER'
                   docker.build registry + ":$BUILD_NUMBER"
               }
              }
