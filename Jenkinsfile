@@ -13,7 +13,10 @@ pipeline {
 	 stage ('Build the image.'){
          steps {
              script {
-                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']])
+              {
+              sh 'docker build -t alex1311/udacitycapstone:$BUILD_ID .'
+              }
              }
          }
      }
@@ -21,7 +24,7 @@ pipeline {
 	     steps {
 		 script {
            docker.withRegistry('',registryCredential ) {
-               dockerImage.push("latest")
+               sh 'docker push alex1311/udacitycapstone:latest'
            }
           }
 	     }
