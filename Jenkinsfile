@@ -23,7 +23,7 @@ pipeline {
               {
                   //sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
                   dockerImage=docker.build registry + ":$BUILD_NUMBER"
-                  sh 'docker run -d -p 80:80 alex1311/udacitycapstone:$BUILD_ID'
+                  sh 'docker run --name nginx -d -P alex1311/udacitycapstone:$BUILD_ID'
               }
              }
          }
