@@ -22,7 +22,7 @@ pipeline {
               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']])
               {
                   //sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
-                  docker.build registry + ":$BUILD_NUMBER"
+                  dockerImage=docker.build registry + ":$BUILD_NUMBER"
                   sh 'docker run -d -p 80:80 alex1311/udacitycapstone:$BUILD_ID'
               }
              }
