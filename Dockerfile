@@ -1,3 +1,3 @@
-FROM nginx
+FROM nginx:alpine
 
-COPY indext.html /usr/share/nginx/
+COPY . /usr/share/nginx/html
