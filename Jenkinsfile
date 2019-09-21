@@ -1,6 +1,7 @@
 pipeline {
   environment {
       registry = "alex1311/udacitycapstone"
+      registryCredential = 'dockerhub'
   }
      agent any
      stages {
@@ -15,7 +16,8 @@ pipeline {
              script {
               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']])
               {
-              sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
+                  //sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
+                  docker.build registry + ":$BUILD_NUMBER"
               }
              }
          }
@@ -24,7 +26,7 @@ pipeline {
 	     steps {
 		 script {
            docker.withRegistry('',registryCredential ) {
-               sh 'sudo docker push alex1311/udacitycapstone:latest'
+               dockerImage.push()
            }
           }
 	     }
