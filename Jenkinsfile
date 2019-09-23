@@ -28,6 +28,7 @@ pipeline {
              }
          }
      }
+
      stage ('Push image') {
 	     steps {
 		 script {
@@ -37,6 +38,22 @@ pipeline {
           }
 	     }
 	   }
+
+     stage('Deploy image to EKS cluster') {
+      steps {
+        withAWS(region:'us-west-2', credentials:'capstone-user') {
+          withKubeConfig(credentialsId: 'eks-kubeconfig', serverUrl: 'xxx') {
+            sh '''kubectl get nodes'''
+            sh '''kubectl set image deployment/udacitycapstone  udacitycapstone=alex1311/udacitycapstone:""$BUILD_ID"'''
+            sh '''kubectl rollout status -w deployment/udacitycapstone'''
+            sh '''kubectl get nodes'''
+          }
+        }
+      }
+
+
+
+     }
      //stage('Remove Unused docker image') {
       //steps{
        // sh "docker rmi $registry:$BUILD_NUMBER"
