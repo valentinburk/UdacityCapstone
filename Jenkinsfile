@@ -39,7 +39,7 @@ pipeline {
 	     }
 	   }
 
-     stage('Deploy image to EKS cluster') {
+     /*stage('Deploy image to EKS cluster') {
       steps {
         withAWS(region:'us-west-2', credentials:'capstone-user') {
 	  sh 'aws iam get-user'
@@ -56,11 +56,11 @@ pipeline {
 
 
 
+     }*/
+     stage('Remove Unused docker image') {
+      steps{
+       sh "docker rmi $registry:$BUILD_NUMBER"
+      }
      }
-     //stage('Remove Unused docker image') {
-      //steps{
-       // sh "docker rmi $registry:$BUILD_NUMBER"
-      //}
-     //}
 }
 }
