@@ -49,7 +49,7 @@ pipeline {
 	    sh '''kubectl get nodes'''
             //sh '''kubectl set image deployments/udacitycapstone udacitycapstone=alex1311/udacitycapstone:"$BUILD_ID"'''
 	    sh '''kubectl run capstonedeployment --image=alex1311/udacitycapstone:"$BUILD_ID"'''
-            sh '''kubectl rollout status -w deployment/udacitycapstone'''
+            sh '''kubectl rollout status -w deployment/capstonedeployment'''
             sh '''kubectl get pods'''
           //}
         }
