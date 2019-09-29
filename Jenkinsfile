@@ -47,11 +47,11 @@ pipeline {
           //withKubeConfig(credentialsId: 'eks-kubeconfig', serverUrl: 'https://2854F248FA6F069EC0B7B8C96E0AAFCB.gr7.us-west-2.eks.amazonaws.com') {
             sh '''aws --region us-west-2 eks update-kubeconfig --name eksworkshop-cf'''
 	    sh '''kubectl get nodes'''
-	    sh '''kubectl apply -f alex1311/udacitycapstone:"$BUILD_ID"'''
  	    //sh '''kubectl run capstonedeployment --image=alex1311/udacitycapstone:"$BUILD_ID" --port=80 --expose=true'''
-            //sh '''kubectl set image deployments/capstonedeployment capstonedeployment=alex1311/udacitycapstone:"$BUILD_ID"'''
+            sh '''kubectl set image deployments/capstonedeployment capstonedeployment=alex1311/udacitycapstone:"$BUILD_ID"'''
 	    sh '''kubectl rollout status -w deployment/capstonedeployment'''
             sh '''kubectl get pods'''
+	    sh '''kubectl describe deployment capstonedeployment'''
           //}
         }
       }
