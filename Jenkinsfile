@@ -44,7 +44,7 @@ pipeline {
         withAWS(region:'us-west-2', credentials:'capstone-user') {
 	  sh 'aws iam get-user'
           echo 'Deploying....'
-          withKubeConfig(credentialsId: 'eks-kubeconfig', serverUrl: 'https://2854F248FA6F069EC0B7B8C96E0AAFCB.gr7.us-west-2.eks.amazonaws.com') {
+          //withKubeConfig(credentialsId: 'eks-kubeconfig', serverUrl: 'https://2854F248FA6F069EC0B7B8C96E0AAFCB.gr7.us-west-2.eks.amazonaws.com') {
             sh '''aws eks --region eu-west-2 update-kubeconfig --name eksworkshop-cf'''
 	    sh '''kubectl get nodes'''
             sh '''kubectl set image deployment/udacitycapstone  udacitycapstone=alex1311/udacitycapstone:""$BUILD_ID"'''
