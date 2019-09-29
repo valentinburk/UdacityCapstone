@@ -41,3 +41,4 @@ Please note: It take some seconds until the worker nodes are ready!
 
 On EC2 instance:
 https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
+https://docs.aws.amazon.com/de_de/eks/latest/userguide/create-kubeconfig.html
