@@ -42,10 +42,10 @@ pipeline {
      stage('Deploy image to EKS cluster') {
       steps {
         withAWS(region:'us-west-2', credentials:'capstone-user') {
-	  sh 'aws iam get-user'
+	  //sh '''aws iam get-user'''
           echo 'Deploying....'
           //withKubeConfig(credentialsId: 'eks-kubeconfig', serverUrl: 'https://2854F248FA6F069EC0B7B8C96E0AAFCB.gr7.us-west-2.eks.amazonaws.com') {
-            sh '''sudo aws eks update-kubeconfig --name eksworkshop-cf --region eu-west-2 '''
+            sh '''aws eks update-kubeconfig --name eksworkshop-cf --region eu-west-2 '''
 	    sh '''kubectl get nodes'''
             sh '''kubectl set image deployment/udacitycapstone  udacitycapstone=alex1311/udacitycapstone:""$BUILD_ID"'''
             sh '''kubectl rollout status -w deployment/udacitycapstone'''
