@@ -50,7 +50,7 @@ pipeline {
             sh '''kubectl set image deployment/udacitycapstone  udacitycapstone=alex1311/udacitycapstone:""$BUILD_ID"'''
             sh '''kubectl rollout status -w deployment/udacitycapstone'''
             sh '''kubectl get nodes'''
-          }
+          //}
         }
       }
 
