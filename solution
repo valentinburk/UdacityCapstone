@@ -36,3 +36,8 @@ Please follow the steps of chapter "To enable worker nodes to join your cluster"
 kubectl get nodes --watch
 
 Please note: It take some seconds until the worker nodes are ready!
+
+
+
+On EC2 instance:
+https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html
