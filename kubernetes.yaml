@@ -86,7 +86,7 @@ Resources:
       CidrBlock: !Ref Subnet2CIDR
       AvailabilityZone: 
         Fn::Select: 
-          - 0
+          - 1
           - Fn::GetAZs: ''
       Tags:
         - Key: Name
@@ -99,7 +99,7 @@ Resources:
       CidrBlock: !Ref Subnet3CIDR
       AvailabilityZone: 
         Fn::Select: 
-          - 0
+          - 2
           - Fn::GetAZs: ''
       Tags:
         - Key: Name
@@ -166,7 +166,6 @@ Resources:
         "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
         "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
     ]
-
 
   EKS:
     Type: AWS::EKS::Cluster
