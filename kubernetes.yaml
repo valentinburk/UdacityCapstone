@@ -173,7 +173,7 @@ Resources:
     Properties:
       Name: UdacityEKSCapstone
       Version: '1.14'
-      RoleArn: !Ref EKSRole
+      RoleArn: Fn::GetAtt: [ EKSRole, Arn ]
       ResourcesVpcConfig:
         SecurityGroupIds:
         - !Ref ControlPlaneSecurityGroup
