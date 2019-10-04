@@ -161,7 +161,7 @@ Resources:
       Tags:
         - Key: Name
           Value: !Sub "${AWS::StackName}-Role"
-    Path: "/"
+      Path: "/"
     ManagedPolicyArns: [
       "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy",
       "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
