@@ -9,7 +9,7 @@ Parameters:
 
     VPCCIDR:
         Description: VPC CIDR
-        Tpye: String
+        Type: String
         Default: 192.168.0.0/16
 
     Subnet1CIDR:
