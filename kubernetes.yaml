@@ -34,7 +34,7 @@ Resources:
     Properties:
       CidrBlock:  !Ref VPCCIDR
       EnableDnsSupport: true
-      EnableDnsHostname: true
+      EnableDnsHostnames: true
       Tags:
         - Key: Name
           Value: !Sub '${AWS::StackName}-VPC'
