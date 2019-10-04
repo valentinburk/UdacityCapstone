@@ -45,7 +45,7 @@ pipeline {
 	  //sh '''aws iam get-user'''
           //echo 'Deploying....'
           //withKubeConfig(credentialsId: 'eks-kubeconfig', serverUrl: 'https://2854F248FA6F069EC0B7B8C96E0AAFCB.gr7.us-west-2.eks.amazonaws.com') {
-            sh '''aws --region us-west-2 eks update-kubeconfig --name eksworkshop-cf'''
+            sh '''aws --region us-west-2 eks update-kubeconfig --name UdacityEKSCapstone'''
 	    sh '''kubectl get nodes'''
  	    //sh '''kubectl run capstonedeployment --image=alex1311/udacitycapstone:"$BUILD_ID" --port=80 --expose=true'''
             sh '''kubectl set image deployments/capstonedeployment capstonedeployment=alex1311/udacitycapstone:"$BUILD_ID"'''
