@@ -191,9 +191,9 @@ Outputs:
     Description: All subnets in the VPC
     Value: !Join [ ",", [ !Ref Subnet1, !Ref Subnet2, !Ref Subnet3 ] ]
 
-  ClusterControlPlaneSecurityGroup:
+  ControlPlaneSecurityGroup:
     Description: Security group for the cluster control plane communication with worker nodes
-    Value: !Join [ ",", [ !Ref ClusterControlPlaneSecurityGroup ] ]
+    Value: !Join [ ",", [ !Ref ControlPlaneSecurityGroup ] ]
 
   VpcId:
     Description: The VPC Id
