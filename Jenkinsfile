@@ -12,7 +12,7 @@ pipeline {
          //}
       //}
 
-  stage ('Current directory') {
+  stage ('Current directory before git') {
     steps{
       sh '''ls -lrt'''
     }
@@ -23,8 +23,8 @@ pipeline {
       git 'https://github.com/alexba13/UdacityCapstone.git'
     }
    }
-   
-  stage ('Current directory') {
+
+  stage ('Current directory after git') {
     steps{
       sh '''ls -lrt'''
     }
