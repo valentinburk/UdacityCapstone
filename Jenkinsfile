@@ -5,19 +5,6 @@ pipeline {
   }
      agent any
      stages {
-     //stage('Lint HTML check') {
-         //steps {
-	     //sh 'echo "Check lint for HTML"'
-         //sh 'tidy -q -e *.html'
-         //}
-      //}
-
-  stage ('Current directory before git') {
-    steps{
-      sh '''ls -lrt'''
-      sh '''pwd'''
-    }
-   }
 
    stage ('Cloning git repo') {
     steps{
@@ -25,10 +12,9 @@ pipeline {
     }
    }
 
-  stage ('Current directory after git') {
+  stage ('Linting Dockerfile before build') {
     steps{
-      sh '''ls -lrt'''
-      sh '''pwd'''
+      sh '''docker run --rm -i hadolint/hadolint < Dockerfile'''
     }
    }
 
