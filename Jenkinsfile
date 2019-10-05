@@ -25,7 +25,7 @@ pipeline {
               {
                   //sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
                   dockerImage=docker.build registry + ":$BUILD_ID"
-                  sh 'docker run -d --name capstone -p 80:80 alex1311/udacitycapstone:$BUILD_ID'
+                  sh 'docker run -d --name capstone_container -p 80:80 alex1311/udacitycapstone:$BUILD_ID'
               }
              }
          }
@@ -64,8 +64,11 @@ pipeline {
      }
      stage('Remove Unused docker image') {
       steps{
-       sh '''docker stop container'''
+       sh '''docker ps -a'''
+       sh '''docker stop capstone_container'''
+       sh '''docker rm $(docker ps -a -q)'''
        sh '''docker rmi $registry:$BUILD_ID'''
+       sh '''docker ps -a'''
       }
      }
 }
