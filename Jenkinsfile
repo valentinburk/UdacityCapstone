@@ -15,6 +15,7 @@ pipeline {
   stage ('Current directory before git') {
     steps{
       sh '''ls -lrt'''
+      sh '''pwd'''
     }
    }
 
@@ -27,6 +28,7 @@ pipeline {
   stage ('Current directory after git') {
     steps{
       sh '''ls -lrt'''
+      sh '''pwd'''
     }
    }
 
