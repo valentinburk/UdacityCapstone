@@ -11,11 +11,25 @@ pipeline {
          //sh 'tidy -q -e *.html'
          //}
       //}
+
+  stage ('Current directory') {
+    steps{
+      sh '''ls -lrt'''
+    }
+   }
+
    stage ('Cloning git repo') {
     steps{
       git 'https://github.com/alexba13/UdacityCapstone.git'
     }
    }
+   
+  stage ('Current directory') {
+    steps{
+      sh '''ls -lrt'''
+    }
+   }
+
 	 stage ('Build the image.'){
          steps {
              script {
