@@ -129,22 +129,6 @@ Resources:
       GroupDescription: Cluster communication with worker nodes
       VpcId: !Ref VPC
 
-  #SecurityGroupEKS:
-  #  Type: AWS::EC2::SecurityGroup
-  #  Properties:
-  #    GroupDescription: UdacityCapstoneEKSSG
-  #    VpcId: !Ref VPC
-  #    SecurityGroupIngress:
-  #    - IpProtocol: tcp
-  #      FromPort: 80
-  #      ToPort: 80
-  #      CidrIp: 0.0.0.0/0
-  #    SecurityGroupIngress:
-  #    - IpProtocol: tcp
-  #      FromPort: 443
-  #      ToPort: 443
-  #      CidrIp: 0.0.0.0/0
-
   EKSRole:
     Type: AWS::IAM::Role
     Properties:
