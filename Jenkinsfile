@@ -24,7 +24,7 @@ pipeline {
               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']])
               {
                   //sh '''sudo docker build -t alex1311/udacitycapstone:$BUILD_ID .'''
-                  dockerImage=docker.build registry + ":$BUILD_NUMBER"
+                  dockerImage=docker.build registry + ":$BUILD_ID"
                   sh 'docker run -d -p 80:80 alex1311/udacitycapstone:$BUILD_ID'
               }
              }
@@ -64,7 +64,7 @@ pipeline {
      }
      stage('Remove Unused docker image') {
       steps{
-       sh "docker rmi $registry:$BUILD_NUMBER"
+       sh '''docker rmi $registry:$BUILD_ID'''
       }
      }
 }
